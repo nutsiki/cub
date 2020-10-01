@@ -1,0 +1,22 @@
+avancer et verifier que c est un caractere acceptee
+quand on arrive a un \n verifier qu il y a soit un espace ou un 1
+une seule lettre NSEW
+remplir la map sans les espaces
+les espaces entre les murs sont remplacer par des zeros
+
+
+parser jusqu au \n
+retenir la position du premier et du dernier 1
+
+je commence a remplir mon buffer quand je croise le premier 1, je continue jusqu au suivant
+ensuite je remplis un nouveau buffer jusqu a trouver un 1 quand je croise un autre 1 je join le premier
+et le deuxieme buffer et je repete le procede quand je croise le \n je termine de remplir
+puis je recommence tout
+
+faire un premier clean pour voir si y a bien tout les caractere et qu une seule lettre et recuperer la plus grande ligne
+verifier que les 1 forme une forme sans trou
+mettre des zero dans les espace se situant dans les formes
+
+enregistrer les formes
+remplacer les espaces se trouvant dans les forme par 0
+
