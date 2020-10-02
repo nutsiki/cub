@@ -40,16 +40,12 @@ int 	check_map(char c)
 	return (0);
 }
 
-typedef struct	s_map
-{
-	char *line;
-	int index;
-	int size;
-}				t_map;
+
 
 int ft_realloc(char **tab, int elem_size, int nb_elem, int new_size)
 {
 	char *new_tab;
+
 
 	if (nb_elem == new_size) // si on veut reallouer de la mm taille que precedement on quitte
 		return (new_size);
@@ -67,7 +63,7 @@ int ft_realloc(char **tab, int elem_size, int nb_elem, int new_size)
 	return (new_size);
 }
 
-int 	parser_map(char *buffer, int size)
+int 	parser_map(char *buffer, int size, t_map **map)
 {
 	int k;
 	int x;
@@ -77,35 +73,63 @@ int 	parser_map(char *buffer, int size)
 	k = 2;
 	x = 0;
 	size_map = 20;
-	if (!(map = calloc(size_map, sizeof(t_map))))
-		return (-1);
 	while (check_map(*buffer) && k)
 	{
-		if (map[x].index == map[x].size)
-			map[x].size = ft_realloc(&map[x].line, sizeof(char), map[x].size, map[x].size + 20);
+//		printf("couco[%d]\n", x);
+//		printf("ind : [%d]\n", (*map)[x].index);
+//		printf("siz : [%d]\n", (*map)[x].size);
+		if ((*map)[x].index == (*map)[x].size)
+			(*map)[x].size = ft_realloc(&(*map)[x].line, sizeof(char), (*map)[x].size, (*map)[x].size + 20);
 		k -= is_cardinal(*buffer);
-		map[x].line[map[x].index++] = *buffer;
+
+		(*map)[x].line[(*map)[x].index++] = *buffer;
+//		printf("haha\n");
+
 		if (*buffer++ == '\n')
 		{
-			map[x].line[map[x].index - 1] = 0;
-			if (max_size < map[x].index)
-				max_size = map[x].index;
+			(*map)[x].line[(*map)[x].index - 1] = 0;
+			if (max_size < (*map)[x].index)
+				max_size = (*map)[x].index;
+//			printf("hihi\n");
 			if (++x == size_map)
-				size_map = ft_realloc((char **) &map, sizeof(t_map), size_map, size_map + 20);
+				size_map = ft_realloc((char **) &(*map), sizeof(t_map), size_map, size_map + 20);
+//			printf("hoho\n");
+
 		}
 	}
 	if (*buffer || !k)
 		return (0);
 	k = -1;
 	while (++k < x)
-		map[k].size = ft_realloc(&map[k].line, sizeof(char), map[k].size, max_size);
+	{
+//		printf("%s\n", map[k]->line);
+//		printf("%p\n", (*map)[k].line);
+//		printf("1 : %p\n", &map[k]);
+
+		(*map)[k].size = ft_realloc(&(*map)[k].line, sizeof(char), (*map)[k].size, max_size);
+	}
 	return (x);
 }
 
-int check_wall(t_map *map)
+//int check_wall(t_map *map)
+//{
+//	flood fill
+//	return (0);
+//}
+
+t_map 	*init_map()
 {
-	flood fill
-	return (0);
+	t_map *map;
+	int size_map;
+
+	size_map = 20;
+	if (!(map = calloc(size_map, sizeof(t_map))))
+		return (NULL);
+	map->size = 0;
+	map->index = 0;
+	map->line = calloc(size_map, sizeof(char));
+	map->line[0] = 0;
+	return (map);
 }
 
 int		main(void)
@@ -113,18 +137,31 @@ int		main(void)
 	char buf[SIZE_MAP + 1];
 	int size;
 	int fd;
-//	char **map;
+	int x;
+	t_map *map;
 
 	if ((fd = open("map.txt", O_RDONLY)) == -1)
 		printf("erreur dans le fichier");
-	init_map
+	map = init_map();
 	while ((size = read(fd, buf, SIZE_MAP)) > 0)
 	{
-		printf("coucouc %d--%d\n", size, SIZE_MAP);
+//		printf("coucouc %d--%d\n", size, SIZE_MAP);
 
 		buf[size] = '\0';
-		if (!parser_map(buf, size))
+		if (!(x = parser_map(buf, size, &map)))
 			return (1);
+//		printf(" x vaut : %d\n", x);
+		int k = -1;
+//		printf("1 : %s\n", map[16].line);
+//		printf("1 : %p\n", &map[0]);
+//		printf("2 : %p\n", &map[950]);
+		while (++k < x)
+		{
+			printf("%s\n", map[k].line);
+//		map[k].size = ft_realloc(&map[k].line, sizeof(char), map[k].size, max_size);
+		}
+
 	}
+
 	return (0);
 }
