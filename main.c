@@ -111,11 +111,56 @@ int 	parser_map(char *buffer, int size, t_map **map)
 	return (x);
 }
 
-//int check_wall(t_map *map)
-//{
-//	flood fill
-//	return (0);
-//}
+int	flood_fill(t_map **map, int j, int i, int x)
+{
+	printf("0a coucou map[%d]->line[%d] vaut %c\n", j, i, (*map)[j].line[i]);
+	if ((*map)[j].line[i] == 'X')
+	{
+//		(*map)[j].line[i] = '0';
+		return (1);
+	}
+	(*map)[j].line[i] = 'X';
+	printf("1a coucou map[%d]->line[%d] vaut %c\n", j, i, (*map)[j].line[i]);
+	if ((i - 1 >= 0) && (!(check_is_space((*map)[j].line[i - 1]))))
+		flood_fill(map, j, i - 1, x);
+	printf("2a coucou map[%d]->line[%d] vaut %c\n", j, i, (*map)[j].line[i]);
+	if ((i + 1 < (*map)[j].size) && (!(check_is_space((*map)[j].line[i + 1]))))
+		flood_fill(map, j, i + 1, x);
+	printf("3a coucou map[%d]->line[%d] vaut %c\n", j, i, (*map)[j].line[i]);
+	if ((j - 1 >= 0) && (!(check_is_space((*map)[j - 1].line[i]))))
+		flood_fill(map, j - 1, i, x);
+	printf("4a coucou map[%d]->line[%d] vaut %c\n", j, i, (*map)[j].line[i]);
+	if ((j + 1 < x) && (!(check_is_space((*map)[j + 1].line[i]))))
+		flood_fill(map, j + 1, i, x);
+	printf("5a coucou map[%d]->line[%d] vaut %c\n", j, i, (*map)[j].line[i]);
+	return (0);
+}
+
+int check_wall(t_map **map, int x)
+{
+	int i;
+	int j;
+
+	j = -1;
+	printf("test : %s\n", (*map)[2].line);
+	while (++j < x)
+	{
+		i = -1;
+		printf("1 map[%d]->line[%d] : %c\n", j, i + 1, (*map)[j].line[i + 1]);
+		while (++i < (*map)->size && (*map)[j].line[i])
+		{
+			printf("2 map[%d]->line[%d] : %c\n", j, i, (*map)[j].line[i]);
+			if ((*map)[j].line[i] == '0')
+			{
+				flood_fill(map, j, i, x);
+			}
+			printf("3 map[%d]->line[%d] : %c\n", j, i, (*map)[j].line[i]);
+		}
+		printf("4 map[%d]->line[%d]\n", j, i);
+
+	}
+	return (0);
+}
 
 t_map 	*init_map()
 {
@@ -150,7 +195,8 @@ int		main(void)
 		buf[size] = '\0';
 		if (!(x = parser_map(buf, size, &map)))
 			return (1);
-//		printf(" x vaut : %d\n", x);
+		check_wall(&map, x);
+		printf(" x vaut : %d\n", x);
 		int k = -1;
 //		printf("1 : %s\n", map[16].line);
 //		printf("1 : %p\n", &map[0]);

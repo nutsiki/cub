@@ -12,7 +12,6 @@
     <list default="true" id="94afc4e7-25d7-4904-ac55-2215aaad401e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cub.h" beforeDir="false" afterPath="$PROJECT_DIR$/cub.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,13 +38,6 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -59,7 +51,8 @@
       <workItem from="1601554131315" duration="5463000" />
       <workItem from="1601567092400" duration="7212000" />
       <workItem from="1601642747634" duration="4618000" />
-      <workItem from="1601651807842" duration="3602000" />
+      <workItem from="1601651807842" duration="3717000" />
+      <workItem from="1601726613601" duration="7247000" />
     </task>
     <servers />
   </component>
@@ -67,6 +60,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="1328" y="209" key="CommitChangelistDialog2" timestamp="1601729492208">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1328" y="209" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1601729492208" />
     <state x="521" y="328" width="596" height="783" key="find.popup" timestamp="1601645193986">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
