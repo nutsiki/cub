@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated />
   </component>
@@ -12,6 +15,7 @@
     <list default="true" id="94afc4e7-25d7-4904-ac55-2215aaad401e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cub.h" beforeDir="false" afterPath="$PROJECT_DIR$/cub.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +56,18 @@
       <workItem from="1601567092400" duration="7212000" />
       <workItem from="1601642747634" duration="4618000" />
       <workItem from="1601651807842" duration="3717000" />
-      <workItem from="1601726613601" duration="7247000" />
+      <workItem from="1601726613601" duration="8543000" />
+      <workItem from="1601750266325" duration="1122000" />
+      <workItem from="1601817242691" duration="5420000" />
+      <workItem from="1601889883412" duration="5136000" />
+      <workItem from="1601899669809" duration="7150000" />
+      <workItem from="1601909010608" duration="743000" />
+      <workItem from="1601915433996" duration="3834000" />
+      <workItem from="1601981328953" duration="1701000" />
+      <workItem from="1601986615835" duration="1203000" />
+      <workItem from="1601995716945" duration="3411000" />
+      <workItem from="1601999788423" duration="758000" />
+      <workItem from="1602072367358" duration="8692000" />
     </task>
     <servers />
   </component>
@@ -64,13 +79,14 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="1328" y="209" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1601729492208" />
-    <state x="521" y="328" width="596" height="783" key="find.popup" timestamp="1601645193986">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state x="521" y="335" width="596" height="745" key="find.popup" timestamp="1601821427722">
+      <screen x="0" y="23" width="2560" height="1369" />
     </state>
     <state x="521" y="328" width="596" height="783" key="find.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1601645193986" />
-    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1601569170880">
+    <state x="521" y="335" width="596" height="745" key="find.popup/0.23.2560.1369@0.23.2560.1369" timestamp="1601821427722" />
+    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1601905305387">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1601569170880" />
+    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1601905305387" />
   </component>
 </project>
