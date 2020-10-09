@@ -6,12 +6,13 @@ SO fsfsfsfs
 EA kokokkokkk
 
 
-
+F 220,100,0
+C 225,30,0
 
 S fdfdwewewedwd
 
                                                                             1
                                                                            101
-                                                                           10011111
+                                                                           1001111110
                                                                             100100001
                                                                             111111111

@@ -14,14 +14,15 @@
 #include <string.h>
 //#include "Libft/libft.h"
 
-typedef struct s_txt
+
+typedef struct	s_rgb
 {
-	char *txt_no;
-	char *txt_so;
-	char *txt_we;
-	char *txt_ea;
-	char *txt_s;
-}				t_txt;
+	int r;
+	int g;
+	int b;
+	int opacite;
+
+}				t_rgb;
 
 typedef struct	s_map
 {
@@ -30,10 +31,9 @@ typedef struct	s_map
 	int size;
 	int reso_x;
 	int reso_y;
-	char *txt_no;
-	char *txt_so;
-	char *txt_we;
 	char **txt;
+	t_rgb color_f;
+	t_rgb color_c;
 }				t_map;
 
 
