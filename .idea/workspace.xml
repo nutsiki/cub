@@ -15,20 +15,9 @@
     <list default="true" id="94afc4e7-25d7-4904-ac55-2215aaad401e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cub.h" beforeDir="false" afterPath="$PROJECT_DIR$/cub.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/idee.txt" beforeDir="false" afterPath="$PROJECT_DIR$/idee.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/map.txt" beforeDir="false" afterPath="$PROJECT_DIR$/map.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/map1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minilibx/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minilibx/libmlx.a" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/libmlx.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minilibx/mlx_init_loop.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_init_loop.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minilibx/mlx_int_str_to_wordtab.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_int_str_to_wordtab.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minilibx/mlx_mouse.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_mouse.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minilibx/mlx_new_image.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_new_image.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minilibx/mlx_new_window.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_new_window.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minilibx/mlx_png.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_png.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minilibx/mlx_shaders.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_shaders.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minilibx/mlx_xpm.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_xpm.o" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +71,11 @@
       <workItem from="1602072367358" duration="8722000" />
       <workItem from="1602166932246" duration="3034000" />
       <workItem from="1602237312899" duration="11784000" />
-      <workItem from="1602255763534" duration="4020000" />
+      <workItem from="1602255763534" duration="4956000" />
+      <workItem from="1602412498819" duration="7347000" />
+      <workItem from="1602422926549" duration="6709000" />
+      <workItem from="1602436180092" duration="1346000" />
+      <workItem from="1602440666224" duration="5299000" />
     </task>
     <servers />
   </component>
@@ -103,6 +96,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state width="600" height="440" key="javadoc.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1602252417702" />
+    <state x="1090" y="545" width="700" height="530" key="recent.locations.popup" timestamp="1602413999663">
+      <screen x="0" y="0" width="2880" height="1620" />
+    </state>
+    <state x="1090" y="545" width="700" height="530" key="recent.locations.popup/0.0.2880.1620@0.0.2880.1620" timestamp="1602413999663" />
     <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1601905305387">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>

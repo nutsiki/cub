@@ -1,9 +1,11 @@
 R 800 400
-NO ./pics/colorstone.png
-SO ./pics/greystone.png
+WE ./pics/mossy.png
+WE ./pics/mossy.png
 WE ./pics/mossy.png
 EA ./pics/wood.png
 S ./pics/barrel.png
+F 128, 244, 75
+C 228, 144, 0
 
 
 

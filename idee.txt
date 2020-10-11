@@ -20,3 +20,19 @@ mettre des zero dans les espace se situant dans les formes
 enregistrer les formes
 remplacer les espaces se trouvant dans les forme par 0
 
+
+
+
+
+
+
+
+
+
+
+
+NOTE DU JOUR
+
+faire en sorte qu on puisse mettre NO SO R dans n importe quel ordre
+faire les couleurs 
+
