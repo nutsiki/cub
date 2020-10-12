@@ -156,16 +156,16 @@ char 	**init_tab(void)
 	i = -1;
 	tab = (char**)malloc(sizeof(char*)*9);
 	while (++i < 9)
-		tab[i] = calloc(sizeof(char),3);
-	tab[i] = "\0";
-	tab[0] = "NO";
-	tab[1] = "SO";
-	tab[2] = "WE";
-	tab[3] = "EA";
-	tab[4] = "S ";
-	tab[5] = "R ";
-	tab[6] = "F ";
-	tab[7] = "C ";
+		tab[i] = calloc(sizeof(char),4);
+	strcpy(tab[i - 1],"\0");
+	strcpy(tab[0],"NO");
+	strcpy(tab[1],"SO");
+	strcpy(tab[2],"WE");
+	strcpy(tab[3],"EA");
+	strcpy(tab[4],"S ");
+	strcpy(tab[5],"R ");
+	strcpy(tab[6],"F ");
+	strcpy(tab[7],"C ");
 	return (tab);
 }
 
@@ -377,7 +377,7 @@ int 	parser_map(char *buffer, int size, t_map **map)
 				size_map = ft_realloc((char **) &(*map), sizeof(t_map), size_map, size_map + 20);
 		}
 	}
-	if (*buffer || !k)
+	if (*buffer || k != 1)
 		return (0);
 	k = -1;
 	while (++k < x)
@@ -387,14 +387,10 @@ int 	parser_map(char *buffer, int size, t_map **map)
 
 int	flood_fill(t_map **map, int j, int i, int x)
 {
-	if ((*map)[j].line[i] == '1')
-		return (1);
 	if ((i - 1 >= 0) && ((check_is_space((*map)[j].line[i - 1]))))
 		return (0);
 	if ((i + 1 < (*map)[j].index) && ((check_is_space((*map)[j].line[i + 1]))))
 		return (0);
-//	printf("(*map)[%d].line[%d] : [%c])\n", j-1, i,(*map)[j - 1].line[i]);
-
 	if ((j - 1 >= 0) && ((check_is_space((*map)[j - 1].line[i]))))
 		return (0);
 	if ((j + 1 < x) && ((check_is_space((*map)[j + 1].line[i]))))
@@ -453,7 +449,7 @@ int		main(void)
 	int x;
 	t_map *map;
 
-	if ((fd = open("map.txt", O_RDONLY)) == -1)
+	if ((fd = open("map.cub", O_RDONLY)) == -1)
 		printf("erreur dans le fichier");
 	map = init_map();
 	buf = calloc(sizeof(char), SIZE_MAP);
@@ -471,21 +467,21 @@ int		main(void)
 			return (1);
 		}
 		int k = -1;
-//		printf("color->r vaut [%d]\n", map->color_f.r);
-//		printf("color->g vaut [%d]\n", (map)->color_f.g);
-//		printf("color->b vaut [%d]\n", (map)->color_f.b);
-//		printf("color->r vaut [%d]\n", (map)->color_c.r);
-//		printf("color->g vaut [%d]\n", (map)->color_c.g);
-//		printf("color->b vaut [%d]\n", (map)->color_c.b);
-////		printf("reso->y vaut [%d]\n", (map)->reso_y);
-////		printf("reso->x vaut [%d]\n", (map)->reso_x);
-//		printf("txt[0] vaut [%s]\n", (map)->txt[0]);
-//		printf("txt[1] vaut [%s]\n", (map)->txt[1]);
-//		printf("txt[2] vaut [%s]\n", (map)->txt[2]);
-//		printf("txt[3] vaut [%s]\n", (map)->txt[3]);
-//		printf("txt[4] vaut [%s]\n", (map)->txt[4]);
-//		while (++k < x)
-//			printf("%s\n", map[k].line);
+		printf("color->r vaut [%d]\n", map->color_f.r);
+		printf("color->g vaut [%d]\n", (map)->color_f.g);
+		printf("color->b vaut [%d]\n", (map)->color_f.b);
+		printf("color->r vaut [%d]\n", (map)->color_c.r);
+		printf("color->g vaut [%d]\n", (map)->color_c.g);
+		printf("color->b vaut [%d]\n", (map)->color_c.b);
+		printf("reso->y vaut [%d]\n", (map)->reso_y);
+		printf("reso->x vaut [%d]\n", (map)->reso_x);
+		printf("txt[0] vaut [%s]\n", (map)->txt[0]);
+		printf("txt[1] vaut [%s]\n", (map)->txt[1]);
+		printf("txt[2] vaut [%s]\n", (map)->txt[2]);
+		printf("txt[3] vaut [%s]\n", (map)->txt[3]);
+		printf("txt[4] vaut [%s]\n", (map)->txt[4]);
+		while (++k < x)
+			printf("%s\n", map[k].line);
 	}
 
 	return (0);

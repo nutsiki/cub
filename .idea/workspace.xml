@@ -15,9 +15,8 @@
     <list default="true" id="94afc4e7-25d7-4904-ac55-2215aaad401e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idee.txt" beforeDir="false" afterPath="$PROJECT_DIR$/idee.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map.txt" beforeDir="false" afterPath="$PROJECT_DIR$/map.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +74,8 @@
       <workItem from="1602412498819" duration="7347000" />
       <workItem from="1602422926549" duration="6709000" />
       <workItem from="1602436180092" duration="1346000" />
-      <workItem from="1602440666224" duration="5299000" />
+      <workItem from="1602440666224" duration="6069000" />
+      <workItem from="1602497621243" duration="1408000" />
     </task>
     <servers />
   </component>
@@ -83,6 +83,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="1476" y="520" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602497965074">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1476" y="520" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1440@0.0.2560.1440" timestamp="1602497965074" />
     <state x="1328" y="209" key="CommitChangelistDialog2" timestamp="1601729492208">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
