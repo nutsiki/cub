@@ -34,5 +34,10 @@ remplacer les espaces se trouvant dans les forme par 0
 NOTE DU JOUR
 
 faire en sorte qu on puisse mettre NO SO R dans n importe quel ordre
-faire les couleurs 
+faire les couleurs
+
+
+
+
+probleme realloc on peut pas acceder au str suivant
 

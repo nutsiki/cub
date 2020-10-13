@@ -1,5 +1,8 @@
 #include "cub.h"
 #include <stdio.h>
+#include "minilibx/mlx.h"
+#include <string.h>
+#include <math.h>
 
 size_t	ft_strlen(const char *s)
 {
@@ -411,6 +414,13 @@ int check_wall(t_map **map, int x)
 
 		while (++i < (*map)->size && (*map)[j].line[i])
 		{
+			if (is_cardinal((*map)[j].line[i]))
+			{
+				printf("position en (*map)[%d].line[%d] vaut [%c]\n", j, i, (*map)[j].line[i]);
+
+				(*map)->pos.x = j;
+				(*map)->pos.y = i;
+			}
 //			printf("(*map)[%d].line[%d] vaut [%s]\n", j, i, (*map)[j].line);
 			if ((*map)[j].line[i] == '0')
 				if(!(flood_fill(map, j, i, x)))
@@ -443,13 +453,35 @@ t_map 	*init_map()
 
 int		main(void)
 {
+	void	*mlx_ptr;
+	void 	*win_ptr;
+	void 	*img_ptr;
+	int		size_x;
+	int 	size_y;
+	char 	*title;
+	int 	width;
+	int 	height;
+	int i;
+	int j;
+	int id;
+	double pos_p_x;
+	double pos_p_y;
+	double dir_v_x;
+	double dir_v_y;
+	double plan_2d_x;
+	double plan_2d_y;
+	double time;
+	double oldtime;
+	double dirX = -1, dirY = 0; //initial direction vector (a modifier en fonction de la direction du player)
+	double planeX = 0, planeY = 0.66;
+
 	char *buf;
 	int size;
 	int fd;
 	int x;
 	t_map *map;
 
-	if ((fd = open("map.cub", O_RDONLY)) == -1)
+	if ((fd = open("map.cub2", O_RDONLY)) == -1)
 		printf("erreur dans le fichier");
 	map = init_map();
 	buf = calloc(sizeof(char), SIZE_MAP);
@@ -466,23 +498,148 @@ int		main(void)
 //			printf("(*map)[%d].line[%d] vaut [%s]\n", 1, 76, map[1].line);
 			return (1);
 		}
-		int k = -1;
-		printf("color->r vaut [%d]\n", map->color_f.r);
-		printf("color->g vaut [%d]\n", (map)->color_f.g);
-		printf("color->b vaut [%d]\n", (map)->color_f.b);
-		printf("color->r vaut [%d]\n", (map)->color_c.r);
-		printf("color->g vaut [%d]\n", (map)->color_c.g);
-		printf("color->b vaut [%d]\n", (map)->color_c.b);
-		printf("reso->y vaut [%d]\n", (map)->reso_y);
-		printf("reso->x vaut [%d]\n", (map)->reso_x);
-		printf("txt[0] vaut [%s]\n", (map)->txt[0]);
-		printf("txt[1] vaut [%s]\n", (map)->txt[1]);
-		printf("txt[2] vaut [%s]\n", (map)->txt[2]);
-		printf("txt[3] vaut [%s]\n", (map)->txt[3]);
-		printf("txt[4] vaut [%s]\n", (map)->txt[4]);
-		while (++k < x)
-			printf("%s\n", map[k].line);
+		// int k = -1;
+		// printf("color->r vaut [%d]\n", map->color_f.r);
+		// printf("color->g vaut [%d]\n", (map)->color_f.g);
+		// printf("color->b vaut [%d]\n", (map)->color_f.b);
+		// printf("color->r vaut [%d]\n", (map)->color_c.r);
+		// printf("color->g vaut [%d]\n", (map)->color_c.g);
+		// printf("color->b vaut [%d]\n", (map)->color_c.b);
+		// printf("reso->y vaut [%d]\n", (map)->reso_y);
+		// printf("reso->x vaut [%d]\n", (map)->reso_x);
+		// printf("txt[0] vaut [%s]\n", (map)->txt[0]);
+		// printf("txt[1] vaut [%s]\n", (map)->txt[1]);
+		// printf("txt[2] vaut [%s]\n", (map)->txt[2]);
+		// printf("txt[3] vaut [%s]\n", (map)->txt[3]);
+		// printf("txt[4] vaut [%s]\n", (map)->txt[4]);
+		// printf("pos_x vaut [%d]\n", map->pos.x);
+		// printf("pos_y vaut [%d]\n", map->pos.y);
+//		while (++k < x)
+//			printf("%s\n", map[k].line);
+	}
+	size_y = 800;
+	size_x = 400;
+	height = 400;
+	width =  800;
+	pos_p_y = map[0].pos.y;
+	pos_p_x = map[0].pos.x;
+	dir_v_x = -1;
+	dir_v_y = 0;
+	plan_2d_x = 0;
+	plan_2d_y = 0.66;
+	time = 0;
+	oldtime = 0;
+	title = "Test";
+	if (!(mlx_ptr = mlx_init()))
+		return (-1);
+	if (!(win_ptr = mlx_new_window(mlx_ptr, size_y, size_x, title)))
+		return (-1);
+	printf("debut init\n");
+	if (!(img_ptr = mlx_new_image(mlx_ptr, width, height)))
+		return (-1);
+	int *kk = (int *)mlx_get_data_addr(img_ptr, &id, &id, &id);
+	printf("init\n");
+	bzero(kk, width * height); // initialiser tt en noir
+
+	for (int x = 0; x < width; x++)
+    {
+		//calculate ray position and direction
+		double cameraX = 2 * x / (double)(width) - 1; //x-coordinate in camera space
+		double rayDirX = dirX + planeX * cameraX;
+		double rayDirY = dirY + planeY * cameraX;
+	
+		int mapX = (int)(pos_p_x);
+        int mapY = (int)(pos_p_y);
+		//length of ray from current position to next x or y-side
+		double sideDistX;
+		double sideDistY;
+
+		//length of ray from one x or y-side to next x or y-side
+		double deltaDistX = fabs(1 / rayDirX);
+		double deltaDistY = fabs(1 / rayDirY);
+		double perpWallDist;
+
+		//what direction to step in x or y-direction (either +1 or -1)
+		int stepX;
+		int stepY;
+
+		int hit = 0; //was there a wall hit?
+		int side; //was a NS or a EW wall hit?
+		if(rayDirX < 0)
+		{
+			stepX = -1;
+			sideDistX = (pos_p_x - mapX) * deltaDistX;
+		}
+		else
+		{
+			stepX = 1;
+			sideDistX = (mapX + 1.0 - pos_p_x) * deltaDistX;
+		}
+
+		if(rayDirY < 0)
+		{
+			stepY = -1;
+			sideDistY = (pos_p_y - mapY) * deltaDistY;
+		}
+		else
+		{
+			stepY = 1;
+			sideDistY = (mapY + 1.0 - pos_p_y) * deltaDistY;
+		}
+
+		// l'envoie du rayon
+		printf("Envoie du rayon %d sur %d\n", x, width);
+		while (hit == 0)
+		{
+			//jump to next map square, OR in x-direction, OR in y-direction
+			if (sideDistX < sideDistY)
+			{
+				sideDistX += deltaDistX;
+				mapX += stepX;
+				side = 0;
+			}
+			else
+			{
+				sideDistY += deltaDistY;
+				mapY += stepY;
+				side = 1;
+			}
+
+			//Check if ray has hit a wall
+			printf("X %d Y %d\n", mapX, mapY);
+			if (map[mapX].line[mapY] == '1') hit = 1;
+
+			// if(map->line[mapY].str[mapX] == '1') hit = 1;
+		}
+		printf("*** HIT ***\n");
+
+		//Calculate distance projected on camera direction (Euclidean distance will give fisheye effect!)
+		if(side == 0) perpWallDist = (mapX - pos_p_x + (1 - stepX) / 2) / rayDirX;
+		else          perpWallDist = (mapY - pos_p_y + (1 - stepY) / 2) / rayDirY;
+
+		//Calculate height of line to draw on screen
+        int lineHeight = (int)(height / perpWallDist);
+
+		//calculate lowest and highest pixel to fill in current stripe
+		int drawStart = -lineHeight / 2 + height / 2;
+		printf("drawStart %d\n", drawStart);
+		if(drawStart < 0) drawStart = 0;
+		int drawEnd = lineHeight / 2 + height / 2;
+		printf("drawEnd %d\n", drawEnd);
+		if(drawEnd >= height) drawEnd = height - 1;
+
+		int color = 0xFF0000; // rouge
+
+		//give x and y sides different brightness
+		if(side == 1) {color = 0x770000;}
+
+		// //draw the pixels of the stripe as a vertical line
+		for (int y = drawStart; y < drawEnd; y++)
+			kk[y * width + x] = color;
 	}
 
+	mlx_put_image_to_window(mlx_ptr, win_ptr, img_ptr, 0, 0);
+	// mlx_loop_hook(mlx_ptr, new_fram, &map);
+	mlx_loop(mlx_ptr);
 	return (0);
 }

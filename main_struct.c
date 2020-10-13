@@ -131,6 +131,9 @@ int ft_realloc(char **tab, int elem_size, int nb_elem, int new_size)
 {
 	char *new_tab;
 
+	printf("realloc str [%s]\n", *tab);
+	printf("realloc elem_size [%d]\n", elem_size);
+	printf("realloc nb elem [%d]\n", nb_elem);
 	if (nb_elem == new_size) // si on veut reallouer de la mm taille que precedement on quitte
 		return (new_size);
 	if (!(new_tab = (char*)calloc(new_size * elem_size, sizeof(char))))
@@ -334,23 +337,11 @@ char 	*parser_premap(char *buf, int size, t_map **map)
 //	if (!(buf = check_r(buf, size, map)))
 //		return (0);
 	if (!(buf = fill_txt(buf, size, map)))
-	{
-		printf("color->r vaut [%d]\n", (*map)->color_f.r);
-		printf("color->g vaut [%d]\n", (*map)->color_f.g);
-		printf("color->b vaut [%d]\n", (*map)->color_f.b);
-		printf("color->r vaut [%d]\n", (*map)->color_c.r);
-		printf("color->g vaut [%d]\n", (*map)->color_c.g);
-		printf("color->b vaut [%d]\n", (*map)->color_c.b);
-
-//		printf("yo %s\n", buf);
-
 		return (0);
-	}
-
 	return (buf);
 }
 
-int 	parser_map(char *buffer, int size, t_line **line)
+int 	parser_map(char *buffer, int size, t_map **map)
 {
 	int k;
 	int x;
@@ -360,32 +351,93 @@ int 	parser_map(char *buffer, int size, t_line **line)
 	k = 2;
 	x = 0;
 	size_map = 20;
-
 	while (check_map(*buffer) && k)
 	{
-		if (line[x]->index == line[x]->size)
-			line[x]->size = ft_realloc(&(*line)[x].str, sizeof(char), line[x]->size, line[x]->size + 20);
+		if ((*map)->line[x].index == (*map)->line[x].size)
+			(*map)->line[x].size = ft_realloc(&(*map)->line[x].str, sizeof(char), (*map)->line[x].size, (*map)->line[x].size + 20);
 		k -= is_cardinal(*buffer);
-
-		(*line)[x].str[line[x]->index++] = *buffer;
+		(*map)->line[x].str[(*map)->line[x].index++] = *buffer;
 		if (*buffer++ == '\n')
 		{
-			(*line)[x].str[(*line)[x].index - 1] = 0;
-			if (max_size < ((*line)[x].index))
-				max_size = (*line)[x].index;
+			(*map)->line[x].str[(*map)->line[x].index - 1] = 0;
+			if (max_size < (*map)->line[x].index)
+				max_size = (*map)->line[x].index;
 			if (++x == size_map)
-				size_map = ft_realloc((char **) &((*line)), sizeof(t_line), size_map, size_map + 20);
+				size_map = ft_realloc((char **) &(*map)->line, sizeof(t_line), size_map, size_map + 20);
 		}
-
-		printf("yo [%s]\n", (*line)[50].str);
 	}
 	if (*buffer || k != 1)
 		return (0);
 	k = -1;
 	while (++k < x)
-		line[k]->size = ft_realloc(&(*line)[k].str, sizeof(char), (*line)[k].size, max_size);
+		(*map)->line[k].size = ft_realloc(&(*map)->line[k].str, sizeof(char), (*map)->line[k].size, max_size);
 	return (x);
 }
+
+//int 	parser_map(char *buffer, int size, t_map **map)
+//{
+//	int k;
+//	int x;
+//	int size_map;
+//	int max_size = 0;
+//
+//	k = 2;
+//	x = 0;
+//	size_map = 20;
+//
+//	while (check_map(*buffer) && k)
+//	{
+//		printf("char [%c]\n", (*map)->(line)[x].str[line[x]->index]);
+//		printf("ind [%d]\n", (*line)[x].index);
+//		printf("siz [%d]\n", (*line)[x].size);
+//		printf("buff [%c]\n", *buffer);
+//		if (line[x]->index == line[x]->size)
+//			line[x]->size = ft_realloc(&(line)[x]->str, sizeof(char), line[x]->size, line[x]->size + 20);
+////		printf("1char [%c]\n", (*line)[x].str[line[x]->index]);
+//		printf("1ind [%d]\n", (*line)[x].index);
+//		printf("1siz [%d]\n", (*line)[x].size);
+//		printf("1buff [%c]\n", *buffer);
+//
+//		k -= is_cardinal(*buffer);
+//
+//		(*line)[x].str[line[x]->index++] = *buffer;
+//		printf("2char [%c]\n", (*line)[x].str[line[x]->index - 1]);
+//		printf("2ind [%d]\n", (*line)[x].index);
+//		printf("2siz [%d]\n", (*line)[x].size);
+//		printf("2buff [%c]\n", *buffer);
+//
+//		if (*buffer++ == '\n')
+//		{
+//			(*line)[x].str[(*line)[x].index - 1] = 0;
+//			if (max_size < ((*line)[x].index))
+//				max_size = (*line)[x].index;
+//			printf("max [%d]\n", max_size);
+//			printf("ind [%d]\n", (*line)[x].index);
+//			printf("siz [%d]\n", (*line)[x].size);
+//			printf("xxx [%d]\n", x);
+//			printf("map [%d]\n", size_map);
+//
+//			if (++x == size_map)
+//			{
+//				printf("3char ]\n");
+//				size_map = ft_realloc((char **) &((*line)), sizeof(t_line), size_map, size_map + 20);
+//			}
+//			printf("3char [%c]\n", (*line)[x-1].str[line[x-1]->index - 1]);
+//
+//		}
+////		printf("3char [%c]\n", (*line)[x].str[line[x]->index - 1]);
+//		printf("3ind [%d]\n", (*line)[x].index);
+//		printf("3siz [%d]\n", (*line)[x].size);
+//		printf("3buff [%c]\n", *(buffer+1));
+//
+//	}
+//	if (*buffer || k != 1)
+//		return (0);
+//	k = -1;
+//	while (++k < x)
+//		line[k]->size = ft_realloc(&(*line)[k].str, sizeof(char), (*line)[k].size, max_size);
+//	return (x);
+//}
 
 int	flood_fill(t_map **map, int j, int i, int x)
 {
@@ -478,7 +530,7 @@ int		main(void)
 		printf("color->r vaut [%d]\n", (map)->color_c.r);
 		printf("color->g vaut [%d]\n", (map)->color_c.g);
 		printf("color->b vaut [%d]\n", (map)->color_c.b);
-		if (!(x = parser_map(buf, size, &(map)->line)))
+		if (!(x = parser_map(buf, size, &(map))))
 			return (1);
 		printf("line[%d] vaut [%s]\n", 90, map->line[90].str);
 
@@ -489,23 +541,23 @@ int		main(void)
 		}
 
 		 int k = -1;
-//		 printf("color->r vaut [%d]\n", map->color_f.r);
-//		 printf("color->g vaut [%d]\n", (map)->color_f.g);
-//		 printf("color->b vaut [%d]\n", (map)->color_f.b);
-//		 printf("color->r vaut [%d]\n", (map)->color_c.r);
-//		 printf("color->g vaut [%d]\n", (map)->color_c.g);
-//		 printf("color->b vaut [%d]\n", (map)->color_c.b);
-		// printf("reso->y vaut [%d]\n", (map)->reso_y);
-		// printf("reso->x vaut [%d]\n", (map)->reso_x);
-		// printf("txt[0] vaut [%s]\n", (map)->txt[0]);
-		// printf("txt[1] vaut [%s]\n", (map)->txt[1]);
-		// printf("txt[2] vaut [%s]\n", (map)->txt[2]);
-		// printf("txt[3] vaut [%s]\n", (map)->txt[3]);
-		// printf("txt[4] vaut [%s]\n", (map)->txt[4]);
-		// printf("pos_x vaut [%d]\n", map->pos.x);
-		// printf("pos_y vaut [%d]\n", map->pos.y);
-//		while (++k < x)
-//			printf("%s\n", map[k].line);
+		 printf("color->r vaut [%d]\n", map->color_f.r);
+		 printf("color->g vaut [%d]\n", (map)->color_f.g);
+		 printf("color->b vaut [%d]\n", (map)->color_f.b);
+		 printf("color->r vaut [%d]\n", (map)->color_c.r);
+		 printf("color->g vaut [%d]\n", (map)->color_c.g);
+		 printf("color->b vaut [%d]\n", (map)->color_c.b);
+		 printf("reso->y vaut [%d]\n", (map)->reso_y);
+		 printf("reso->x vaut [%d]\n", (map)->reso_x);
+		 printf("txt[0] vaut [%s]\n", (map)->txt[0]);
+		 printf("txt[1] vaut [%s]\n", (map)->txt[1]);
+		 printf("txt[2] vaut [%s]\n", (map)->txt[2]);
+		 printf("txt[3] vaut [%s]\n", (map)->txt[3]);
+		 printf("txt[4] vaut [%s]\n", (map)->txt[4]);
+		 printf("pos_x vaut [%d]\n", map->pos.x);
+		 printf("pos_y vaut [%d]\n", map->pos.y);
+		while (++k < x)
+			printf("%s\n", map->line[k].str);
 	}
 	return (0);
 }
