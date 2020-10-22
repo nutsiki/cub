@@ -15,11 +15,9 @@
     <list default="true" id="94afc4e7-25d7-4904-ac55-2215aaad401e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cub.c" beforeDir="false" afterPath="$PROJECT_DIR$/cub.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cub.h" beforeDir="false" afterPath="$PROJECT_DIR$/cub.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idee.txt" beforeDir="false" afterPath="$PROJECT_DIR$/idee.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_struct.c" beforeDir="false" afterPath="$PROJECT_DIR$/main_struct.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_struct.h" beforeDir="false" afterPath="$PROJECT_DIR$/main_struct.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +78,9 @@
       <workItem from="1602440666224" duration="6069000" />
       <workItem from="1602497621243" duration="12122000" />
       <workItem from="1602583152748" duration="2772000" />
+      <workItem from="1602592257582" duration="780000" />
+      <workItem from="1602602533695" duration="4412000" />
+      <workItem from="1602685180516" duration="1658000" />
     </task>
     <servers />
   </component>

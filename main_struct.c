@@ -1,6 +1,7 @@
 #include "main_struct.h"
 #include <stdio.h>
-
+#include "minilibx/mlx.h"
+#include <string.h>
 size_t	ft_strlen(const char *s)
 {
 	size_t i;
@@ -131,9 +132,6 @@ int ft_realloc(char **tab, int elem_size, int nb_elem, int new_size)
 {
 	char *new_tab;
 
-	printf("realloc str [%s]\n", *tab);
-	printf("realloc elem_size [%d]\n", elem_size);
-	printf("realloc nb elem [%d]\n", nb_elem);
 	if (nb_elem == new_size) // si on veut reallouer de la mm taille que precedement on quitte
 		return (new_size);
 	if (!(new_tab = (char*)calloc(new_size * elem_size, sizeof(char))))
@@ -374,71 +372,6 @@ int 	parser_map(char *buffer, int size, t_map **map)
 	return (x);
 }
 
-//int 	parser_map(char *buffer, int size, t_map **map)
-//{
-//	int k;
-//	int x;
-//	int size_map;
-//	int max_size = 0;
-//
-//	k = 2;
-//	x = 0;
-//	size_map = 20;
-//
-//	while (check_map(*buffer) && k)
-//	{
-//		printf("char [%c]\n", (*map)->(line)[x].str[line[x]->index]);
-//		printf("ind [%d]\n", (*line)[x].index);
-//		printf("siz [%d]\n", (*line)[x].size);
-//		printf("buff [%c]\n", *buffer);
-//		if (line[x]->index == line[x]->size)
-//			line[x]->size = ft_realloc(&(line)[x]->str, sizeof(char), line[x]->size, line[x]->size + 20);
-////		printf("1char [%c]\n", (*line)[x].str[line[x]->index]);
-//		printf("1ind [%d]\n", (*line)[x].index);
-//		printf("1siz [%d]\n", (*line)[x].size);
-//		printf("1buff [%c]\n", *buffer);
-//
-//		k -= is_cardinal(*buffer);
-//
-//		(*line)[x].str[line[x]->index++] = *buffer;
-//		printf("2char [%c]\n", (*line)[x].str[line[x]->index - 1]);
-//		printf("2ind [%d]\n", (*line)[x].index);
-//		printf("2siz [%d]\n", (*line)[x].size);
-//		printf("2buff [%c]\n", *buffer);
-//
-//		if (*buffer++ == '\n')
-//		{
-//			(*line)[x].str[(*line)[x].index - 1] = 0;
-//			if (max_size < ((*line)[x].index))
-//				max_size = (*line)[x].index;
-//			printf("max [%d]\n", max_size);
-//			printf("ind [%d]\n", (*line)[x].index);
-//			printf("siz [%d]\n", (*line)[x].size);
-//			printf("xxx [%d]\n", x);
-//			printf("map [%d]\n", size_map);
-//
-//			if (++x == size_map)
-//			{
-//				printf("3char ]\n");
-//				size_map = ft_realloc((char **) &((*line)), sizeof(t_line), size_map, size_map + 20);
-//			}
-//			printf("3char [%c]\n", (*line)[x-1].str[line[x-1]->index - 1]);
-//
-//		}
-////		printf("3char [%c]\n", (*line)[x].str[line[x]->index - 1]);
-//		printf("3ind [%d]\n", (*line)[x].index);
-//		printf("3siz [%d]\n", (*line)[x].size);
-//		printf("3buff [%c]\n", *(buffer+1));
-//
-//	}
-//	if (*buffer || k != 1)
-//		return (0);
-//	k = -1;
-//	while (++k < x)
-//		line[k]->size = ft_realloc(&(*line)[k].str, sizeof(char), (*line)[k].size, max_size);
-//	return (x);
-//}
-
 int	flood_fill(t_map **map, int j, int i, int x)
 {
 	if ((i - 1 >= 0) && ((check_is_space((*map)->line[j].str[i - 1]))))
@@ -502,7 +435,117 @@ t_map 	*init_map()
 	map->line->str = calloc(size_map, sizeof(char*));
 	map->reso_x = 0;
 	map->reso_y = 0;
+	map->dirX = -1;
+	map->dirY = 0;
+	map->planeX = 0;
+	map->planeY = 0.66;
 	return (map);
+}
+
+int new_frame(void *param)
+{
+	t_map *map;
+
+	map = (t_map*)param;
+	bzero(map->data, map->reso_x * map->reso_y); // initialiser tt en noir
+	for (int x = 0; x < map->reso_x; x++)
+	{
+		//calculate ray position and direction
+		double cameraX = 2 * x / (double)(map->reso_x) - 1; //x-coordinate in camera space
+		double rayDirX = map->dirX + map->planeX * cameraX;
+		double rayDirY = map->dirY + map->planeY * cameraX;
+
+		int mapX = (int)(map->pos.x);
+		int mapY = (int)(map->pos.y);
+		//length of ray from current position to next x or y-side
+		double sideDistX;
+		double sideDistY;
+
+		//length of ray from one x or y-side to next x or y-side
+		double deltaDistX = fabs(1 / rayDirX);
+		double deltaDistY = fabs(1 / rayDirY);
+		double perpWallDist;
+
+		//what direction to step in x or y-direction (either +1 or -1)
+		int stepX;
+		int stepY;
+
+		int hit = 0; //was there a wall hit?
+		int side; //was a NS or a EW wall hit?
+		if(rayDirX < 0)
+		{
+			stepX = -1;
+			sideDistX = (map->pos.x - mapX) * deltaDistX;
+		}
+		else
+		{
+			stepX = 1;
+			sideDistX = (mapX + 1.0 - map->pos.x) * deltaDistX;
+		}
+
+		if(rayDirY < 0)
+		{
+			stepY = -1;
+			sideDistY = (map->pos.y - mapY) * deltaDistY;
+		}
+		else
+		{
+			stepY = 1;
+			sideDistY = (mapY + 1.0 - map->pos.y) * deltaDistY;
+		}
+
+		// l'envoie du rayon
+		printf("Envoie du rayon %d sur %d\n", x, (int)map->reso_x);
+		while (hit == 0)
+		{
+			//jump to next map square, OR in x-direction, OR in y-direction
+			if (sideDistX < sideDistY)
+			{
+				sideDistX += deltaDistX;
+				mapX += stepX;
+				side = 0;
+			}
+			else
+			{
+				sideDistY += deltaDistY;
+				mapY += stepY;
+				side = 1;
+			}
+
+			//Check if ray has hit a wall
+			if (map->line[mapX].str[mapY] == '1') hit = 1;
+		}
+		printf("*** HIT ***\n");
+
+		//Calculate distance projected on camera direction (Euclidean distance will give fisheye effect!)
+		if(side == 0) perpWallDist = (mapX - map->pos.x + (1 - stepX) / 2) / rayDirX;
+		else          perpWallDist = (mapY - map->pos.y + (1 - stepY) / 2) / rayDirY;
+
+		//Calculate map->reso_y of line to draw on screen
+		int lineheight = (int)(map->reso_y / perpWallDist);
+
+		//calculate lowest and highest pixel to fill in current stripe
+		int drawStart = -lineheight / 2 + map->reso_y / 2;
+		printf("drawStart %d\n", drawStart);
+		if(drawStart < 0) drawStart = 0;
+		int drawEnd = lineheight / 2 + map->reso_y / 2;
+		printf("drawEnd %d\n", drawEnd);
+		if(drawEnd >= map->reso_y) drawEnd = map->reso_y - 1;
+
+		int color = 0xFF0000; // rouge
+
+		//give x and y sides different brightness
+		if(side == 1) {color = 0x770000;}
+
+		// //draw the pixels of the stripe as a vertical line
+		for (int y = 0; y < drawStart; y++)
+			map->data[y * (int)map->reso_x + x] = 0X00FFFF;
+		for (int y = drawStart; y < drawEnd; y++)
+			map->data[y * (int)map->reso_x + x] = color;
+		for (int y = drawEnd; y < map->reso_y; y++)
+			map->data[y * (int)map->reso_x + x] = 0X00FF00;
+	}
+	mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->img_ptr, 0, 0);
 }
 
 int		main(void)
@@ -516,48 +559,25 @@ int		main(void)
 	if ((fd = open("map.cub", O_RDONLY)) == -1)
 		printf("erreur dans le fichier");
 	map = init_map();
-
 	buf = calloc(sizeof(char), SIZE_MAP);
 	while ((size = read(fd, buf, SIZE_MAP)) > 0)
 	{
 		buf[size] = '\0';
-
 		if (!(buf = parser_premap(buf, size, &map)))
 			return (1);
-		printf("color->r vaut [%d]\n", map->color_f.r);
-		printf("color->g vaut [%d]\n", (map)->color_f.g);
-		printf("color->b vaut [%d]\n", (map)->color_f.b);
-		printf("color->r vaut [%d]\n", (map)->color_c.r);
-		printf("color->g vaut [%d]\n", (map)->color_c.g);
-		printf("color->b vaut [%d]\n", (map)->color_c.b);
 		if (!(x = parser_map(buf, size, &(map))))
 			return (1);
-		printf("line[%d] vaut [%s]\n", 90, map->line[90].str);
-
 		if (!(check_wall(&map, x)))
-		{
-//			printf("(*map)[%d].line[%d] vaut [%s]\n", 1, 76, map[1].line);
 			return (1);
-		}
-
-		 int k = -1;
-		 printf("color->r vaut [%d]\n", map->color_f.r);
-		 printf("color->g vaut [%d]\n", (map)->color_f.g);
-		 printf("color->b vaut [%d]\n", (map)->color_f.b);
-		 printf("color->r vaut [%d]\n", (map)->color_c.r);
-		 printf("color->g vaut [%d]\n", (map)->color_c.g);
-		 printf("color->b vaut [%d]\n", (map)->color_c.b);
-		 printf("reso->y vaut [%d]\n", (map)->reso_y);
-		 printf("reso->x vaut [%d]\n", (map)->reso_x);
-		 printf("txt[0] vaut [%s]\n", (map)->txt[0]);
-		 printf("txt[1] vaut [%s]\n", (map)->txt[1]);
-		 printf("txt[2] vaut [%s]\n", (map)->txt[2]);
-		 printf("txt[3] vaut [%s]\n", (map)->txt[3]);
-		 printf("txt[4] vaut [%s]\n", (map)->txt[4]);
-		 printf("pos_x vaut [%d]\n", map->pos.x);
-		 printf("pos_y vaut [%d]\n", map->pos.y);
-		while (++k < x)
-			printf("%s\n", map->line[k].str);
 	}
+	if (!(map->mlx_ptr = mlx_init()) ||
+		!(map->win_ptr = mlx_new_window(map->mlx_ptr, map->reso_x, map->reso_y, "Test")) ||
+		!(map->img_ptr = mlx_new_image(map->mlx_ptr, map->reso_x, map->reso_y)) ||
+		!(map->data = (int *)mlx_get_data_addr(map->img_ptr, &map->id, &map->id, &map->id)))
+		return (-1);
+
+	mlx_loop_hook(map->mlx_ptr, new_frame, map);
+	mlx_key_hook(map->win_ptr, ,map);// faire une fonction qui deplqce le perso
+	mlx_loop(map->mlx_ptr);
 	return (0);
 }

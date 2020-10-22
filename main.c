@@ -456,13 +456,9 @@ int		main(void)
 	void	*mlx_ptr;
 	void 	*win_ptr;
 	void 	*img_ptr;
-	int		size_x;
-	int 	size_y;
 	char 	*title;
 	int 	width;
 	int 	height;
-	int i;
-	int j;
 	int id;
 	double pos_p_x;
 	double pos_p_y;
@@ -470,8 +466,6 @@ int		main(void)
 	double dir_v_y;
 	double plan_2d_x;
 	double plan_2d_y;
-	double time;
-	double oldtime;
 	double dirX = -1, dirY = 0; //initial direction vector (a modifier en fonction de la direction du player)
 	double planeX = 0, planeY = 0.66;
 
@@ -517,8 +511,6 @@ int		main(void)
 //		while (++k < x)
 //			printf("%s\n", map[k].line);
 	}
-	size_y = 800;
-	size_x = 400;
 	height = 400;
 	width =  800;
 	pos_p_y = map[0].pos.y;
@@ -532,7 +524,7 @@ int		main(void)
 	title = "Test";
 	if (!(mlx_ptr = mlx_init()))
 		return (-1);
-	if (!(win_ptr = mlx_new_window(mlx_ptr, size_y, size_x, title)))
+	if (!(win_ptr = mlx_new_window(mlx_ptr, width, height, title)))
 		return (-1);
 	printf("debut init\n");
 	if (!(img_ptr = mlx_new_image(mlx_ptr, width, height)))
@@ -634,9 +626,13 @@ int		main(void)
 		if(side == 1) {color = 0x770000;}
 
 		// //draw the pixels of the stripe as a vertical line
+		for (int y = 0; y < drawStart; y++)
+			kk[y * width + x] = 0X00FFFF;
 		for (int y = drawStart; y < drawEnd; y++)
 			kk[y * width + x] = color;
-	}
+		for (int y = drawEnd; y < height; y++)
+			kk[y * width + x] = 0X00FF00;
+    }
 
 	mlx_put_image_to_window(mlx_ptr, win_ptr, img_ptr, 0, 0);
 	// mlx_loop_hook(mlx_ptr, new_fram, &map);
