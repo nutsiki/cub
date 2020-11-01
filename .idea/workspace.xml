@@ -15,10 +15,19 @@
     <list default="true" id="94afc4e7-25d7-4904-ac55-2215aaad401e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/a.out.dSYM/Contents/Resources/DWARF/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out.dSYM/Contents/Resources/DWARF/a.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_struct.c" beforeDir="false" afterPath="$PROJECT_DIR$/main_struct.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_struct.h" beforeDir="false" afterPath="$PROJECT_DIR$/main_struct.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx/libmlx.a" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/libmlx.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx/mlx_init_loop.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_init_loop.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx/mlx_int_str_to_wordtab.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_int_str_to_wordtab.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx/mlx_mouse.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_mouse.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx/mlx_new_image.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_new_image.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx/mlx_new_window.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_new_window.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx/mlx_png.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_png.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx/mlx_shaders.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_shaders.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx/mlx_xpm.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_xpm.o" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +40,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectId" id="1iBdWvr0KEo1bTImVV3SjnFEVx4" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -43,7 +53,22 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="94afc4e7-25d7-4904-ac55-2215aaad401e" name="Default Changelist" comment="" />
@@ -81,11 +106,27 @@
       <workItem from="1602592257582" duration="780000" />
       <workItem from="1602602533695" duration="4412000" />
       <workItem from="1602685180516" duration="1658000" />
+      <workItem from="1603536946821" duration="56000" />
+      <workItem from="1603537034473" duration="8478000" />
+      <workItem from="1604087123908" duration="7190000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="1476" y="520" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602497965074">

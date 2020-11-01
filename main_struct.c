@@ -495,7 +495,7 @@ int new_frame(void *param)
 		}
 
 		// l'envoie du rayon
-		printf("Envoie du rayon %d sur %d\n", x, (int)map->reso_x);
+//		printf("Envoie du rayon %d sur %d\n", x, (int)map->reso_x);
 		while (hit == 0)
 		{
 			//jump to next map square, OR in x-direction, OR in y-direction
@@ -515,7 +515,7 @@ int new_frame(void *param)
 			//Check if ray has hit a wall
 			if (map->line[mapX].str[mapY] == '1') hit = 1;
 		}
-		printf("*** HIT ***\n");
+//		printf("*** HIT ***\n");
 
 		//Calculate distance projected on camera direction (Euclidean distance will give fisheye effect!)
 		if(side == 0) perpWallDist = (mapX - map->pos.x + (1 - stepX) / 2) / rayDirX;
@@ -526,17 +526,16 @@ int new_frame(void *param)
 
 		//calculate lowest and highest pixel to fill in current stripe
 		int drawStart = -lineheight / 2 + map->reso_y / 2;
-		printf("drawStart %d\n", drawStart);
+//		printf("drawStart %d\n", drawStart);
 		if(drawStart < 0) drawStart = 0;
 		int drawEnd = lineheight / 2 + map->reso_y / 2;
-		printf("drawEnd %d\n", drawEnd);
+//		printf("drawEnd %d\n", drawEnd);
 		if(drawEnd >= map->reso_y) drawEnd = map->reso_y - 1;
 
 		int color = 0xFF0000; // rouge
 
 		//give x and y sides different brightness
 		if(side == 1) {color = 0x770000;}
-
 		// //draw the pixels of the stripe as a vertical line
 		for (int y = 0; y < drawStart; y++)
 			map->data[y * (int)map->reso_x + x] = 0X00FFFF;
@@ -544,8 +543,80 @@ int new_frame(void *param)
 			map->data[y * (int)map->reso_x + x] = color;
 		for (int y = drawEnd; y < map->reso_y; y++)
 			map->data[y * (int)map->reso_x + x] = 0X00FF00;
+
 	}
 	mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->img_ptr, 0, 0);
+}
+
+int		key_hook(int keycode,void *param)
+{
+	t_map *map;
+	int mapX = (int)(map->pos.x);
+	int mapY = (int)(map->pos.y);
+	double ms = 2;
+	double rs = 2;
+	double oldDirX;
+	double oldPlanex;
+
+	map = (t_map*)param;
+	printf("dirX vaut [%f]\n", map->dirX);
+	printf("dirY vaut [%f]\n", map->dirY);
+	if (keycode == 13 || keycode == 126)
+	{
+//		printf("reso vaut %c\n", map->line[map->pos.x].str[map->pos.y]);
+//		printf("reso vaut %c\n", map->line[map->pos.x + (int)(map->dirX * ms)].str[map->pos.y]);
+//		printf("reso vaut %c\n", map->line[map->pos.x].str[map->pos.y + (int)(map->dirY * ms)]);
+//		printf("resoo vaut %c\n", map->line[map->pos.x + (int)(map->dirX * ms)].str[map->pos.y + (int)(map->dirY * ms)]);
+//		printf("posx vaut %d\n", map->pos.x);
+//		printf("posy vaut %d\n", map->pos.y);
+		if (map->line[map->pos.x + ((int)(map->dirX * ms))].str[map->pos.y] == '0')
+			map->pos.x += map->dirX * ms;
+		if (map->line[map->pos.x].str[map->pos.y + ((int)(map->dirY * ms))] == '0')
+			map->pos.y += map->dirY * ms;
+//
+//		printf("1reso vaut %c\n", map->line[map->pos.x].str[map->pos.y]);
+//		printf("1reso vaut %c\n", map->line[map->pos.x + (int)(map->dirX * ms)].str[map->pos.y]);
+//		printf("1reso vaut %c\n", map->line[map->pos.x].str[map->pos.y + (int)(map->dirY * ms)]);
+//		printf("1resoo vaut %c\n", map->line[map->pos.x + (int)(map->dirX * ms)].str[map->pos.y + (int)(map->dirY * ms)]);
+
+	}
+	if (keycode == 1 || keycode == 125)
+	{
+//		printf("reso vaut %c\n", map->line[map->pos.x].str[map->pos.y]);
+//		printf("reso vaut %c\n", map->line[map->pos.x - (int)(map->dirX * ms)].str[map->pos.y]);
+//		printf("reso vaut %c\n", map->line[map->pos.x].str[map->pos.y - (int)(map->dirY * ms)]);
+//		printf("resoo vaut %c\n", map->line[map->pos.x - (int)(map->dirX * ms)].str[map->pos.y - (int)(map->dirY * ms)]);
+//		printf("posx vaut %d\n", map->pos.x);
+//		printf("posy vaut %d\n", map->pos.y);
+		if (map->line[map->pos.x - ((int)(map->dirX * ms))].str[map->pos.y] == '0')
+			map->pos.x -= map->dirX * ms;
+		if (map->line[map->pos.x].str[map->pos.y - ((int)(map->dirY * ms))] == '0')
+			map->pos.y -= map->dirY * ms;
+
+//		printf("1reso vaut %c\n", map->line[map->pos.x].str[map->pos.y]);
+//		printf("1reso vaut %c\n", map->line[map->pos.x - (int)(map->dirX * ms)].str[map->pos.y]);
+//		printf("1reso vaut %c\n", map->line[map->pos.x].str[map->pos.y - (int)(map->dirY * ms)]);
+//		printf("1resoo vaut %c\n", map->line[map->pos.x - (int)(map->dirX * ms)].str[map->pos.y - (int)(map->dirY * ms)]);
+
+	}
+	if (keycode == 2 || keycode == 124)
+	{
+		oldDirX = map->dirX;
+		map->dirX = map->dirX * cos(-rs) - map->dirY * sin(-rs);
+		map->dirY = oldDirX * sin(-rs) + map->dirY * cos(-rs);
+		oldPlanex = map->planeX;
+		map->planeX = map->planeX * cos(-rs) - map->planeY * sin(-rs);
+		map->planeY = oldPlanex * sin(-rs) + map->planeY * cos(-rs);
+	}
+	if (keycode == 0 || keycode == 123)
+	{
+		oldDirX = map->dirX;
+		map->dirX = map->dirX * cos(rs) - map->dirY * sin(rs);
+		map->dirY = oldDirX * sin(rs) + map->dirY * cos(rs);
+		oldPlanex = map->planeX;
+		map->planeX = map->planeX * cos(rs) - map->planeY * sin(rs);
+		map->planeY = oldPlanex * sin(rs) + map->planeY * cos(rs);
+	}
 }
 
 int		main(void)
@@ -570,14 +641,14 @@ int		main(void)
 		if (!(check_wall(&map, x)))
 			return (1);
 	}
+	map->line[map->pos.x].str[map->pos.y] = '0';
 	if (!(map->mlx_ptr = mlx_init()) ||
 		!(map->win_ptr = mlx_new_window(map->mlx_ptr, map->reso_x, map->reso_y, "Test")) ||
 		!(map->img_ptr = mlx_new_image(map->mlx_ptr, map->reso_x, map->reso_y)) ||
 		!(map->data = (int *)mlx_get_data_addr(map->img_ptr, &map->id, &map->id, &map->id)))
 		return (-1);
-
 	mlx_loop_hook(map->mlx_ptr, new_frame, map);
-	mlx_key_hook(map->win_ptr, ,map);// faire une fonction qui deplqce le perso
+	mlx_key_hook(map->win_ptr, key_hook, map);// faire une fonction qui deplqce le perso
 	mlx_loop(map->mlx_ptr);
 	return (0);
 }
