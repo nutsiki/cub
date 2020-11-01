@@ -25,8 +25,8 @@ typedef struct	s_rgb
 
 typedef struct s_pos
 {
-	int x;
-	int y;
+	double x;
+	double y;
 }				t_pos;
 
 typedef struct s_line

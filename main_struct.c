@@ -553,14 +553,14 @@ int		key_hook(int keycode,void *param)
 	t_map *map;
 	int mapX = (int)(map->pos.x);
 	int mapY = (int)(map->pos.y);
-	double ms = 2;
-	double rs = 2;
+	double ms = 1;
+	double rs = 0.5;
 	double oldDirX;
 	double oldPlanex;
 
 	map = (t_map*)param;
-	printf("dirX vaut [%f]\n", map->dirX);
-	printf("dirY vaut [%f]\n", map->dirY);
+//	printf("dirX vaut [%f]\n", map->dirX);
+//	printf("dirY vaut [%f]\n", map->dirY);
 	if (keycode == 13 || keycode == 126)
 	{
 //		printf("reso vaut %c\n", map->line[map->pos.x].str[map->pos.y]);
@@ -569,9 +569,9 @@ int		key_hook(int keycode,void *param)
 //		printf("resoo vaut %c\n", map->line[map->pos.x + (int)(map->dirX * ms)].str[map->pos.y + (int)(map->dirY * ms)]);
 //		printf("posx vaut %d\n", map->pos.x);
 //		printf("posy vaut %d\n", map->pos.y);
-		if (map->line[map->pos.x + ((int)(map->dirX * ms))].str[map->pos.y] == '0')
+		if (map->line[(int)(map->pos.x + (map->dirX * ms))].str[(int)map->pos.y] == '0')
 			map->pos.x += map->dirX * ms;
-		if (map->line[map->pos.x].str[map->pos.y + ((int)(map->dirY * ms))] == '0')
+		if (map->line[(int)map->pos.x].str[(int)(map->pos.y + (map->dirY * ms))] == '0')
 			map->pos.y += map->dirY * ms;
 //
 //		printf("1reso vaut %c\n", map->line[map->pos.x].str[map->pos.y]);
@@ -588,9 +588,9 @@ int		key_hook(int keycode,void *param)
 //		printf("resoo vaut %c\n", map->line[map->pos.x - (int)(map->dirX * ms)].str[map->pos.y - (int)(map->dirY * ms)]);
 //		printf("posx vaut %d\n", map->pos.x);
 //		printf("posy vaut %d\n", map->pos.y);
-		if (map->line[map->pos.x - ((int)(map->dirX * ms))].str[map->pos.y] == '0')
+		if (map->line[(int)(map->pos.x - (map->dirX * ms))].str[(int)map->pos.y] == '0')
 			map->pos.x -= map->dirX * ms;
-		if (map->line[map->pos.x].str[map->pos.y - ((int)(map->dirY * ms))] == '0')
+		if (map->line[(int)map->pos.x].str[(int)(map->pos.y - (map->dirY * ms))] == '0')
 			map->pos.y -= map->dirY * ms;
 
 //		printf("1reso vaut %c\n", map->line[map->pos.x].str[map->pos.y]);
@@ -641,7 +641,7 @@ int		main(void)
 		if (!(check_wall(&map, x)))
 			return (1);
 	}
-	map->line[map->pos.x].str[map->pos.y] = '0';
+	map->line[(int)map->pos.x].str[(int)map->pos.y] = '0';
 	if (!(map->mlx_ptr = mlx_init()) ||
 		!(map->win_ptr = mlx_new_window(map->mlx_ptr, map->reso_x, map->reso_y, "Test")) ||
 		!(map->img_ptr = mlx_new_image(map->mlx_ptr, map->reso_x, map->reso_y)) ||

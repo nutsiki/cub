@@ -15,17 +15,8 @@
     <list default="true" id="94afc4e7-25d7-4904-ac55-2215aaad401e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/a.out.dSYM/Contents/Resources/DWARF/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out.dSYM/Contents/Resources/DWARF/a.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_struct.c" beforeDir="false" afterPath="$PROJECT_DIR$/main_struct.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minilibx/libmlx.a" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/libmlx.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minilibx/mlx_init_loop.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_init_loop.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minilibx/mlx_int_str_to_wordtab.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_int_str_to_wordtab.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minilibx/mlx_mouse.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_mouse.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minilibx/mlx_new_image.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_new_image.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minilibx/mlx_new_window.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_new_window.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minilibx/mlx_png.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_png.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minilibx/mlx_shaders.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_shaders.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minilibx/mlx_xpm.o" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_xpm.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_struct.h" beforeDir="false" afterPath="$PROJECT_DIR$/main_struct.h" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +99,7 @@
       <workItem from="1602685180516" duration="1658000" />
       <workItem from="1603536946821" duration="56000" />
       <workItem from="1603537034473" duration="8478000" />
-      <workItem from="1604087123908" duration="7190000" />
+      <workItem from="1604087123908" duration="10244000" />
     </task>
     <servers />
   </component>
