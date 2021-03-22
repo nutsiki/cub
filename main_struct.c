@@ -457,6 +457,14 @@ int new_frame(void *param)
 		double cameraX = 2 * x / (double)(map->reso_x) - 1; //x-coordinate in camera space
 		double rayDirX = map->dirX + map->planeX * cameraX;
 		double rayDirY = map->dirY + map->planeY * cameraX;
+		printf("x [%d]\n", x);
+		printf("map->reso_x [%f]\n", map->reso_x);
+		printf("map->reso_y [%f]\n", map->reso_y);
+		printf("camerax [%f]\n", cameraX);
+		printf("map->dirx [%f]\n", map->dirX);
+		printf("map->diry [%f]\n", map->dirY);
+		printf("raydirx [%f]\n", rayDirX);
+		printf("raydiry [%f]\n", rayDirY);
 
 		int mapX = (int)(map->pos.x);
 		int mapY = (int)(map->pos.y);
@@ -521,13 +529,27 @@ int new_frame(void *param)
         }
 
 //		printf("*** HIT ***\n");
-
+//		printf("mapX [%d]\n", mapX);
+//		printf("mapy [%d]\n", mapY);
+		printf("map->pos.x [%f]\n", map->pos.x);
+		printf("map->pos.y [%f]\n", map->pos.y);
+//		printf("raydirx [%f]\n", rayDirX);
+//		printf("raydiry [%f]\n", rayDirY);
+//		printf("stepx [%d]\n", stepX);
+//		printf("stepy [%d]\n", stepY);
+//		printf("side [%d]\n", side);
 		//Calculate distance projected on camera direction (Euclidean distance will give fisheye effect!)
 		if(side == 0) perpWallDist = (mapX - map->pos.x + (1 - stepX) / 2) / rayDirX;
 		else          perpWallDist = (mapY - map->pos.y + (1 - stepY) / 2) / rayDirY;
 
-		//Calculate map->reso_y of line to draw on screen
+//		if (perpWallDist == 0) perpWallDist = 2;
+//		//Calculate map->reso_y of line to draw on screen
+//		if (perpWallDist == 0.0)
+//			perpWallDist = 0.1;
 		int lineheight = (int)(map->reso_y / perpWallDist);
+//		if (perpWallDist == 0.0)
+//			printf("perpWallDist %.152f\n", perpWallDist);
+		printf("lineheight %d\n", lineheight);
 
 		//calculate lowest and highest pixel to fill in current stripe
 		int drawStart = -lineheight / 2 + map->reso_y / 2;
@@ -547,7 +569,8 @@ int new_frame(void *param)
 			map->data[y * (int)map->reso_x + x] = 0X00FFFF;
 		for (int y = drawStart; y < drawEnd; y++)
 			map->data[y * (int)map->reso_x + x] = color;
-		printf("jojo [%d]\n", );
+//		printf("Drawend [%d]\n", drawEnd);
+//		printf("Drawstart [%d]\n", drawStart);
         for (int y = drawEnd; y < map->reso_y; y++)
 			map->data[y * (int)map->reso_x + x] = 0X00FF00;
 

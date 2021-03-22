@@ -15,10 +15,8 @@
     <list default="true" id="94afc4e7-25d7-4904-ac55-2215aaad401e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cub.c" beforeDir="false" afterPath="$PROJECT_DIR$/cub.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_struct.c" beforeDir="false" afterPath="$PROJECT_DIR$/main_struct.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minilibx/mlx_init_loop.m" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_init_loop.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map.cub2" beforeDir="false" afterPath="$PROJECT_DIR$/map.cub2" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,13 +42,6 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -99,6 +90,7 @@
       <workItem from="1612108012303" duration="4415000" />
       <workItem from="1612563463414" duration="50000" />
       <workItem from="1615291252395" duration="4987000" />
+      <workItem from="1616429118195" duration="8287000" />
     </task>
     <servers />
   </component>
