@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include "minilibx/mlx.h"
 #include <string.h>
+#include <stdlib.h>
+#include <math.h>
+#include <unistd.h>
 size_t	ft_strlen(const char *s)
 {
 	size_t i;
@@ -513,8 +516,10 @@ int new_frame(void *param)
 			}
 
 			//Check if ray has hit a wall
-			if (map->line[mapX].str[mapY] == '1') hit = 1;
-		}
+			if (map->line[mapX].str[mapY] == '1')
+			    hit = 1;
+        }
+
 //		printf("*** HIT ***\n");
 
 		//Calculate distance projected on camera direction (Euclidean distance will give fisheye effect!)
@@ -537,11 +542,13 @@ int new_frame(void *param)
 		//give x and y sides different brightness
 		if(side == 1) {color = 0x770000;}
 		// //draw the pixels of the stripe as a vertical line
+
 		for (int y = 0; y < drawStart; y++)
 			map->data[y * (int)map->reso_x + x] = 0X00FFFF;
 		for (int y = drawStart; y < drawEnd; y++)
 			map->data[y * (int)map->reso_x + x] = color;
-		for (int y = drawEnd; y < map->reso_y; y++)
+		printf("jojo [%d]\n", );
+        for (int y = drawEnd; y < map->reso_y; y++)
 			map->data[y * (int)map->reso_x + x] = 0X00FF00;
 
 	}
@@ -561,19 +568,23 @@ int		key_hook(int keycode,void *param)
 	map = (t_map*)param;
 //	printf("dirX vaut [%f]\n", map->dirX);
 //	printf("dirY vaut [%f]\n", map->dirY);
+    printf("add : [%p]\n", param);
 	if (keycode == 13 || keycode == 126)
 	{
 //		printf("reso vaut %c\n", map->line[map->pos.x].str[map->pos.y]);
 //		printf("reso vaut %c\n", map->line[map->pos.x + (int)(map->dirX * ms)].str[map->pos.y]);
 //		printf("reso vaut %c\n", map->line[map->pos.x].str[map->pos.y + (int)(map->dirY * ms)]);
 //		printf("resoo vaut %c\n", map->line[map->pos.x + (int)(map->dirX * ms)].str[map->pos.y + (int)(map->dirY * ms)]);
-//		printf("posx vaut %d\n", map->pos.x);
-//		printf("posy vaut %d\n", map->pos.y);
+		printf("Avant d'avancer\n");
+        printf("posx vaut %f\n", map->pos.x);
+		printf("posy vaut %f\n", map->pos.y);
 		if (map->line[(int)(map->pos.x + (map->dirX * ms))].str[(int)map->pos.y] == '0')
 			map->pos.x += map->dirX * ms;
 		if (map->line[(int)map->pos.x].str[(int)(map->pos.y + (map->dirY * ms))] == '0')
 			map->pos.y += map->dirY * ms;
-//
+        printf("Apres avancer\n");
+        printf("posx vaut %f\n", map->pos.x);
+		printf("posy vaut %f\n", map->pos.y);
 //		printf("1reso vaut %c\n", map->line[map->pos.x].str[map->pos.y]);
 //		printf("1reso vaut %c\n", map->line[map->pos.x + (int)(map->dirX * ms)].str[map->pos.y]);
 //		printf("1reso vaut %c\n", map->line[map->pos.x].str[map->pos.y + (int)(map->dirY * ms)]);
@@ -617,6 +628,7 @@ int		key_hook(int keycode,void *param)
 		map->planeX = map->planeX * cos(rs) - map->planeY * sin(rs);
 		map->planeY = oldPlanex * sin(rs) + map->planeY * cos(rs);
 	}
+	printf("y\n");
 }
 
 int		main(void)
@@ -627,7 +639,7 @@ int		main(void)
 	int x;
 	t_map *map;
 
-	if ((fd = open("map.cub", O_RDONLY)) == -1)
+	if ((fd = open("map.cub2", O_RDONLY)) == -1)
 		printf("erreur dans le fichier");
 	map = init_map();
 	buf = calloc(sizeof(char), SIZE_MAP);

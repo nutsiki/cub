@@ -3,6 +3,8 @@
 #include "minilibx/mlx.h"
 #include <string.h>
 #include <math.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 size_t	ft_strlen(const char *s)
 {
@@ -519,8 +521,8 @@ int		main(void)
 	dir_v_y = 0;
 	plan_2d_x = 0;
 	plan_2d_y = 0.66;
-	time = 0;
-	oldtime = 0;
+//	time = 0;
+//	oldtime = 0;
 	title = "Test";
 	if (!(mlx_ptr = mlx_init()))
 		return (-1);

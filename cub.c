@@ -7,7 +7,7 @@
 
 int 	new_fram(void* param)
 {
-	printf("coucou [%p]\n", param);
+//	printf("coucou [%p]\n", param);
 	return 0;
 }
 

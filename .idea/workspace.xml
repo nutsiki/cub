@@ -15,10 +15,11 @@
     <list default="true" id="94afc4e7-25d7-4904-ac55-2215aaad401e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cub.c" beforeDir="false" afterPath="$PROJECT_DIR$/cub.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_struct.c" beforeDir="false" afterPath="$PROJECT_DIR$/main_struct.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_struct.h" beforeDir="false" afterPath="$PROJECT_DIR$/main_struct.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minilibx/mlx_init_loop.m" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx/mlx_init_loop.m" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,19 +45,14 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+  <component name="RunManager">
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -100,50 +96,31 @@
       <workItem from="1603536946821" duration="56000" />
       <workItem from="1603537034473" duration="8478000" />
       <workItem from="1604087123908" duration="10244000" />
+      <workItem from="1612108012303" duration="4415000" />
+      <workItem from="1612563463414" duration="50000" />
+      <workItem from="1615291252395" duration="4987000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1476" y="520" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602497965074">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state x="689" y="349" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1615293439784">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="1476" y="520" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1440@0.0.2560.1440" timestamp="1602497965074" />
-    <state x="1328" y="209" key="CommitChangelistDialog2" timestamp="1601729492208">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="1328" y="209" key="CommitChangelistDialog2/0.0.2560.1440@0.0.2560.1440" timestamp="1601729492208" />
-    <state x="521" y="335" width="596" height="745" key="find.popup" timestamp="1601821427722">
-      <screen x="0" y="23" width="2560" height="1369" />
-    </state>
-    <state x="521" y="328" width="596" height="783" key="find.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1601645193986" />
-    <state x="521" y="335" width="596" height="745" key="find.popup/0.23.2560.1369@0.23.2560.1369" timestamp="1601821427722" />
-    <state width="600" height="440" key="javadoc.popup" timestamp="1602252417702">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state width="600" height="440" key="javadoc.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1602252417702" />
-    <state x="1090" y="545" width="700" height="530" key="recent.locations.popup" timestamp="1602413999663">
-      <screen x="0" y="0" width="2880" height="1620" />
-    </state>
-    <state x="1090" y="545" width="700" height="530" key="recent.locations.popup/0.0.2880.1620@0.0.2880.1620" timestamp="1602413999663" />
-    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1602514522021">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="945" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1602514522021" />
+    <state x="689" y="349" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1615293439784" />
   </component>
 </project>
